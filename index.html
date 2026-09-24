@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Zedekiah Bradley | Portfolio</title>
 
   <style>
-    /* Reset & base styling */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* RESET & BASE STYLES */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
@@ -15,81 +28,176 @@
       color: #333;
       transition: background 0.3s, color 0.3s;
     }
-    a { color: #0077ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
 
-    /* Dark mode */
+    a {
+      color: #0077ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* DARK MODE */
+
     body.dark {
-      background: #1a1a1a;
+      background: #181818;
       color: #f1f1f1;
     }
-    body.dark a { color: #66aaff; }
-    body.dark header {
-      background: linear-gradient(135deg, #111, #333);
-    }
-    body.dark .project-card {
-      background: #2a2a2a;
-      box-shadow: 0 2px 8px rgba(255,255,255,0.05);
-    }
-    body.dark footer { color: #aaa; }
 
-    /* Gradient header with profile image */
+    body.dark a {
+      color: #7ab8ff;
+    }
+
+    body.dark header {
+      background: linear-gradient(135deg, #111, #292929);
+    }
+
+    body.dark .project-card {
+      background: #242424;
+      border-color: #333;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.03);
+    }
+
+    body.dark .project-card p {
+      color: #c7c7c7;
+    }
+
+    body.dark .tech-stack span {
+      background: #333;
+      color: #8bbcff;
+    }
+
+    body.dark .project-status {
+      background: #333;
+      color: #aaa;
+    }
+
+    body.dark footer {
+      color: #888;
+    }
+
+
+    /*  HEADER */
+
     header {
       position: relative;
       text-align: center;
-      background: linear-gradient(135deg, #0077ff, #7a00ff);
+
+      background: linear-gradient(
+        135deg,
+        #0077ff,
+        #7a00ff
+      );
+
       color: white;
-      padding: 80px 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+
+      padding: 80px 20px 70px;
+
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
       border-bottom-left-radius: 30px;
       border-bottom-right-radius: 30px;
     }
+
     header img {
-      width: 120px;
-      height: 120px;
+      width: 125px;
+      height: 125px;
+
+      object-fit: cover;
+
       border-radius: 50%;
       border: 4px solid white;
+
       margin-bottom: 20px;
     }
-    header h1 { font-size: 2.5rem; margin-bottom: 10px; }
-    header p { font-size: 1.2rem; opacity: 0.9; }
 
-    nav { margin-top: 20px; }
+    header h1 {
+      font-size: 2.7rem;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      opacity: 0.9;
+    }
+
+
+    /* NAVIGATION */
+
+    nav {
+      margin-top: 25px;
+    }
+
     nav a {
       margin: 0 15px;
+
       font-weight: bold;
       color: white;
+
+      transition: opacity 0.2s;
     }
 
-    /* Dark mode toggle button */
+    nav a:hover {
+      opacity: 0.75;
+      text-decoration: none;
+    }
+
+
+    /*  DARK MODE BUTTON*/
+
     .toggle-btn {
       position: absolute;
+
       top: 20px;
       right: 20px;
+
       padding: 8px 14px;
+
       font-size: 0.9rem;
+      font-weight: bold;
+
       border: none;
       border-radius: 20px;
+
       cursor: pointer;
+
       background: white;
       color: #333;
-      font-weight: bold;
-      transition: background 0.3s, color 0.3s;
+
+      transition:
+        background 0.3s,
+        color 0.3s,
+        transform 0.2s;
     }
+
+    .toggle-btn:hover {
+      transform: scale(1.04);
+    }
+
     body.dark .toggle-btn {
       background: #333;
       color: #f1f1f1;
     }
 
-    /* Section styling */
+
+    /*GENERAL SECTIONS */
+
     section {
-      max-width: 900px;
+      max-width: 1000px;
+
       margin: auto;
-      padding: 60px 20px;
-      opacity: 0;              /* start hidden for animation */
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
+      padding: 70px 25px;
+
+      opacity: 0;
+      transform: translateY(25px);
+
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
     }
+
     section.show {
       opacity: 1;
       transform: translateY(0);
@@ -97,171 +205,607 @@
 
     section h2 {
       font-size: 2rem;
-      margin-bottom: 20px;
+
+      margin-bottom: 25px;
+
       border-bottom: 2px solid #0077ff;
+
       display: inline-block;
     }
 
-    /* Project cards */
+
+    /*ABOUT*/
+
+    #about p {
+      max-width: 850px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+
+    /*  PROJECTS*/
+
     .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 22px;
     }
+
+
+    /* Individual project card */
+
     .project-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.4s ease, opacity 0.6s ease, background 0.3s;
+      position: relative;
+
+      background: white;
+
+      padding: 30px;
+
+      border: 1px solid #e6e6e6;
+      border-radius: 14px;
+
+      box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06);
+
       opacity: 0;
       transform: translateY(20px);
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        opacity 0.6s ease,
+        background 0.3s;
     }
+
     .project-card.show {
       opacity: 1;
       transform: translateY(0);
     }
+
     .project-card:hover {
-      transform: translateY(-5px) scale(1.02);
+      transform: translateY(-5px);
+
+      box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.1);
     }
+
+
+    /* Featured Echo card */
+
+    .project-card.featured {
+      grid-column: 1 / -1;
+
+      padding: 38px;
+
+      border-top: 4px solid #0077ff;
+    }
+
+
+    /* Small featured text */
+
+    .featured-label {
+      display: block;
+
+      color: #0077ff;
+
+      font-size: 0.75rem;
+      font-weight: bold;
+
+      letter-spacing: 1.5px;
+
+      margin-bottom: 12px;
+    }
+
+
+    /* Project title/header */
+
+    .project-header {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 12px;
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+    }
+
+    .project-card.featured h3 {
+      font-size: 1.8rem;
+    }
+
+
+    /* Project description */
+
+    .project-card p {
+      color: #555;
+
+      margin-bottom: 18px;
+
+      max-width: 750px;
+
+      line-height: 1.7;
+    }
+
+
+    /* In development badge */
+
+    .project-status {
+      background: #eeeeee;
+      color: #555;
+
+      padding: 5px 10px;
+
+      border-radius: 20px;
+
+      font-size: 0.7rem;
+      font-weight: bold;
+
+      white-space: nowrap;
+    }
+
+
+    /* TECH BADGES\ */
+
+    .tech-stack {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin: 20px 0;
+    }
+
+    .tech-stack span {
+      background: #eef4ff;
+      color: #0066dd;
+
+      padding: 5px 11px;
+
+      border-radius: 6px;
+
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+
+    /*PROJECT LINKS */
+
+    .project-link {
+      display: inline-block;
+
+      margin-top: 5px;
+
+      font-weight: bold;
+
+      color: #0077ff;
+    }
+
+
+    /* CONTACT*/
+
+    #contact p {
+      line-height: 2;
+      font-size: 1.05rem;
+    }
+
+
+    /* FOOTER */
 
     footer {
       text-align: center;
+
       font-size: 0.9rem;
+
       color: #666;
-      padding: 20px;
+
+      padding: 25px;
     }
+
+
+    /* MOBILE*/
+
+    @media (max-width: 700px) {
+
+      header {
+        padding: 70px 20px 55px;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      section {
+        padding: 55px 20px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card.featured {
+        grid-column: auto;
+        padding: 28px;
+      }
+
+      .project-card {
+        padding: 25px;
+      }
+
+      .project-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+    }
+
   </style>
 </head>
+
+
 <body>
 
-  <!--Hero with Profile -->
+
+  <!--HERO -->
+
   <header>
-    <button class="toggle-btn">Dark Mode</button>
-    <img src="pic.jpg" alt="Zedekiah Bradley">
+
+    <button class="toggle-btn">
+      Dark Mode
+    </button>
+
+    <img
+      src="pic.jpg"
+      alt="Zedekiah Bradley"
+    >
+
     <h1>Zedekiah Bradley</h1>
-    <p>Software Developer | UTD '28</p>
+
+    <p>
+      Software Developer | UT Dallas '28
+    </p>
+
     <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#projects">
+        Projects
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
     </nav>
+
   </header>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a Computer Science student at UT Dallas who enjoys turning ideas into software people can actually use. 
-      I'm especially interested in AI/ML and full-stack development, and I enjoy figuring out how different technologies can work together to solve real problems.
-      I've worked on projects ranging from an AI-powered shopping assistant, to a simple SQL database backed website, to Echo, an application that transforms books into character-voiced audiobooks. 
-      Through these projects, I've gained experience with Python, Java, C++, React, SQL, APIs, and AI development.
-      I'm always looking to learn something new, take on more challenging projects, and work with people who are just as excited about building things as I am.
 
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <h2>About Me</h2>
+
+    <p>
+      I'm a Computer Science student at UT Dallas who enjoys
+      turning ideas into software people can actually use.
+      I'm especially interested in AI/ML and full-stack
+      development, and I enjoy figuring out how different
+      technologies can work together to solve real problems.
+      <br><br>
+      I've worked on projects ranging from an AI-powered
+      shopping assistant, to a SQL database-backed website,
+      to Echo, an application that transforms books into
+      character-voiced audiobooks. Through these projects,
+      I've gained experience with Python, Java, C++, React,
+      SQL, APIs, and AI development.
+      <br><br>
+      I'm always looking to learn something new, take on more
+      challenging projects, and work with people who are just
+      as excited about building things as I am.
     </p>
+
   </section>
 
-  <!-- Projects Section -->
+
+  <!-- PROJECTS-->
+
   <section id="projects">
+
     <h2>Projects</h2>
+
     <div class="projects">
 
-      <div class="project-card">
-        <h3>CNZ Shopping</h3>
-        <p>
-          An AI-powered shopping assistant built with a team of four through Code2College. 
-          I focused on backend development, integrating AI and real-time product data to generate personalized recommendations, 
-          compare products, and build shopping lists tailored to a user's budget and needs.<br> 
-          Managed by: <a href="https://code2college.org/" target="_blank">Code2College</a>.
-        </p>
-        <a href="https://github.com/ZedBradley/CNZ-Shopping" target="_blank">View on GitHub</a>
-      </div>
 
-      <div class="project-card">
-        <h3>SQL Simple Bank</h3>
-        <p>
-          A simple banking application used to strengthen knowledge of HTML and SQL databases.
-          Includes a simple UI and basic functions: account creation, deposit/withdraw,
-          transfers, and account viewing.
-        </p>
-        <a href="https://github.com/ZedBradley/SQL-Simple-Bank" target="_blank">View on GitHub</a>
-      </div>
+      <!--ECHO-->
 
-      <div class="project-card">
+      <div class="project-card featured">
+
+        <span class="featured-label">
+          FEATURED PROJECT
+        </span>
+
         <div class="project-header">
+
           <h3>Echo</h3>
-          <span class="project-status">In Development</span>
+
+          <span class="project-status">
+            IN DEVELOPMENT
+          </span>
+
         </div>
 
-      <p>
-        A full-stack mobile application built with a team of 4 that transforms books
-        into immersive AI-generated audiobooks. Echo extracts text from PDF and
-        EPUB files, identifies characters, generates narration scripts, and
-        creates unique AI voices for characters and narration.
-      </p>
+        <p>
+          A full-stack application built with a team of four
+          through ACM at UT Dallas that transforms books into
+          immersive AI-generated audiobooks. Echo extracts text
+          from PDF and EPUB files, identifies characters,
+          generates narration scripts, and creates unique AI
+          voices for characters and narration.
+        </p>
 
-      <div class="tech-stack">
-        <span>Python</span>
-        <span>React</span>
-        <span>AI/ML</span>
-        <span>TTS</span>
+        <div class="tech-stack">
+
+          <span>Python</span>
+          <span>React</span>
+          <span>AI/ML</span>
+          <span>TTS</span>
+
+        </div>
+
+        <a
+          href="https://github.com/acm-projects/Echo"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link"
+        >
+          View on GitHub
+        </a>
+
       </div>
 
-      <a href="https://github.com/acm-projects/Echo"
+
+      <!-- CNZ SHOPPING -->
+
+      <div class="project-card">
+
+        <div class="project-header">
+          <h3>CNZ Shopping</h3>
+        </div>
+
+        <p>
+          An AI-powered shopping assistant built with a team
+          of four through Code2College. I focused on backend
+          development, integrating AI and real-time product
+          data to generate personalized recommendations,
+          compare products, and build shopping lists tailored
+          to a user's budget and needs.
+        </p>
+
+        <p>
+          Managed by:
+          <a
+            href="https://code2college.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Code2College
+          </a>
+        </p>
+
+        <div class="tech-stack">
+
+          <span>Python</span>
+          <span>Flask</span>
+          <span>OpenAI API</span>
+          <span>SerpAPI</span>
+
+        </div>
+
+        <a
+          href="https://github.com/ZedBradley/CNZ-Shopping"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link"
+        >
+          View on GitHub
+        </a>
+
+      </div>
+
+
+      <!-- SQL SIMPLE BANK -->
+
+      <div class="project-card">
+
+        <div class="project-header">
+          <h3>SQL Simple Bank</h3>
+        </div>
+
+        <p>
+          A simple banking application built to strengthen
+          my understanding of databases and connecting a
+          front end to stored data. The application includes
+          account creation, deposits, withdrawals, transfers,
+          and account viewing through a simple user interface.
+        </p>
+
+        <div class="tech-stack">
+
+          <span>SQL</span>
+          <span>HTML</span>
+          <span>CSS</span>
+
+        </div>
+
+        <a
+          href="https://github.com/ZedBradley/SQL-Simple-Bank"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="project-link"
+        >
+          View on GitHub
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT-->
+
+  <section id="contact">
+
+    <h2>Contact</h2>
+
+    <p>
+
+      📧 Email:
+      <a href="mailto:zedbradley30@gmail.com">
+        zedbradley30@gmail.com
+      </a>
+
+      <br>
+
+      💼 LinkedIn:
+      <a
+        href="https://www.linkedin.com/in/zedekiah-bradley-010965372/"
         target="_blank"
         rel="noopener noreferrer"
-        class="project-link">
-        View on GitHub 
+      >
+        linkedin.com/in/Zedekiah-Bradley
       </a>
-    </div>
+
+      <br>
+
+      💻 GitHub:
+      <a
+        href="https://github.com/ZedBradley"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        github.com/ZedBradley
+      </a>
+
+    </p>
+
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      📧 Email: <a href="mailto:zedbradley30@gmail.com">zedbradley30@gmail.com</a><br>
-      💼 LinkedIn: <a href="https://www.linkedin.com/in/zedekiah-bradley-010965372/e" target="_blank">linkedin.com/in/Zedekiah-Bradley</a><br>
-      💻 GitHub: <a href="https://github.com/ZedBradley" target="_blank">github.com/ZedBradley</a>
-    </p>
-  </section>
+
+  <!-- FOOTER -->
 
   <footer>
-    © <span id="year"></span> Zedekiah Bradley. All rights reserved.
+
+    © <span id="year"></span>
+    Zedekiah Bradley. All rights reserved.
+
   </footer>
 
-  <!-- JS for animations and dark mode -->
+
+  <!-- JAVASCRIPT -->
+
   <script>
-    // Reveal sections and project cards on scroll
-    const sections = document.querySelectorAll("section");
-    const cards = document.querySelectorAll(".project-card");
+
+    // Reveal sections as the user scrolls
+
+    const sections =
+      document.querySelectorAll("section");
+
+    const cards =
+      document.querySelectorAll(".project-card");
+
 
     const revealOnScroll = () => {
-      const trigger = window.innerHeight * 0.85;
-      sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < trigger) sec.classList.add("show");
+
+      const trigger =
+        window.innerHeight * 0.85;
+
+
+      sections.forEach(section => {
+
+        const top =
+          section.getBoundingClientRect().top;
+
+        if (top < trigger) {
+          section.classList.add("show");
+        }
+
       });
+
+
       cards.forEach(card => {
-        const top = card.getBoundingClientRect().top;
-        if (top < trigger) card.classList.add("show");
+
+        const top =
+          card.getBoundingClientRect().top;
+
+        if (top < trigger) {
+          card.classList.add("show");
+        }
+
       });
+
     };
 
-    window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll);
 
-    // Current year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    window.addEventListener(
+      "scroll",
+      revealOnScroll
+    );
 
-    // Dark mode toggle
-    const toggleBtn = document.querySelector(".toggle-btn");
+    window.addEventListener(
+      "load",
+      revealOnScroll
+    );
+
+
+    // Automatically update footer year
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    // Dark mode
+
+    const toggleBtn =
+      document.querySelector(".toggle-btn");
+
+
     toggleBtn.addEventListener("click", () => {
+
       document.body.classList.toggle("dark");
-      toggleBtn.textContent = document.body.classList.contains("dark")
-        ? "Light Mode"
-        : "Dark Mode";
+
+      const darkMode =
+        document.body.classList.contains("dark");
+
+
+      toggleBtn.textContent =
+        darkMode
+          ? "Light Mode"
+          : "Dark Mode";
+
     });
+
   </script>
+
+
 </body>
 </html>
