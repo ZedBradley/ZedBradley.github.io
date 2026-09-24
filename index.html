@@ -9,7 +9,7 @@
 
   <style>
 
-    /* RESET & BASE STYLES */
+    /* Reset and base styles */
 
     * {
       margin: 0;
@@ -39,7 +39,7 @@
     }
 
 
-    /* DARK MODE */
+    /* Dark mode */
 
     body.dark {
       background: #181818;
@@ -48,10 +48,6 @@
 
     body.dark a {
       color: #7ab8ff;
-    }
-
-    body.dark header {
-      background: linear-gradient(135deg, #111, #292929);
     }
 
     body.dark .project-card {
@@ -79,115 +75,322 @@
     }
 
 
-    /*  HEADER */
+    /* Hero */
 
-    header {
+    .hero {
+      min-height: 620px;
+
+      background:
+        radial-gradient(
+          circle at 75% 50%,
+          rgba(88, 64, 255, 0.22),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #07162f 0%,
+          #081b3a 50%,
+          #17133d 100%
+        );
+
+      color: white;
       position: relative;
-      text-align: center;
+      overflow: hidden;
+    }
 
-      background: linear-gradient(
-        135deg,
-        #0077ff,
-        #7a00ff
-      );
+    .hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      right: -180px;
+      bottom: -250px;
+
+      background: #713cff;
+
+      filter: blur(130px);
+      opacity: 0.25;
+
+      pointer-events: none;
+    }
+
+
+    /* Navigation */
+
+    .top-nav {
+      width: 100%;
+      max-width: 1100px;
+
+      margin: auto;
+
+      height: 80px;
+
+      padding: 0 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
 
       color: white;
 
-      padding: 80px 20px 70px;
+      letter-spacing: 1px;
 
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
+      text-decoration: none;
     }
 
-    header img {
-      width: 125px;
-      height: 125px;
-
-      object-fit: cover;
-
-      border-radius: 50%;
-      border: 4px solid white;
-
-      margin-bottom: 20px;
+    .logo:hover {
+      text-decoration: none;
     }
 
-    header h1 {
-      font-size: 2.7rem;
-      margin-bottom: 8px;
+    .nav-links {
+      display: flex;
+      gap: 38px;
     }
 
-    header p {
-      font-size: 1.15rem;
-      opacity: 0.9;
-    }
-
-
-    /* NAVIGATION */
-
-    nav {
-      margin-top: 25px;
-    }
-
-    nav a {
-      margin: 0 15px;
-
-      font-weight: bold;
+    .nav-links a {
       color: white;
+
+      font-size: 0.95rem;
+      font-weight: 500;
 
       transition: opacity 0.2s;
     }
 
-    nav a:hover {
-      opacity: 0.75;
+    .nav-links a:hover {
+      opacity: 0.65;
       text-decoration: none;
     }
 
 
-    /*  DARK MODE BUTTON*/
+    /* Dark mode button */
 
     .toggle-btn {
-      position: absolute;
+      background: transparent;
+      color: white;
 
-      top: 20px;
-      right: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
 
-      padding: 8px 14px;
+      padding: 8px 17px;
 
-      font-size: 0.9rem;
-      font-weight: bold;
-
-      border: none;
       border-radius: 20px;
 
       cursor: pointer;
 
-      background: white;
-      color: #333;
+      font-size: 0.85rem;
+      font-weight: 600;
 
       transition:
-        background 0.3s,
-        color 0.3s,
-        transform 0.2s;
+        background 0.2s,
+        border-color 0.2s;
     }
 
     .toggle-btn:hover {
-      transform: scale(1.04);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.5);
     }
 
     body.dark .toggle-btn {
-      background: #333;
-      color: #f1f1f1;
+      background: transparent;
+      color: white;
     }
 
 
-    /*GENERAL SECTIONS */
+    /* Hero content */
+
+    .hero-content {
+      max-width: 1100px;
+      min-height: 520px;
+
+      margin: auto;
+
+      padding: 60px 30px 90px;
+
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+
+      align-items: center;
+
+      gap: 80px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-text h1 {
+      line-height: 0.95;
+      margin-bottom: 24px;
+    }
+
+    .first-name {
+      display: block;
+
+      font-size: clamp(3.5rem, 6vw, 5.3rem);
+      font-weight: 800;
+
+      color: white;
+    }
+
+    .last-name {
+      display: block;
+
+      font-size: clamp(3.5rem, 6vw, 5.3rem);
+      font-weight: 800;
+
+      background: linear-gradient(
+        90deg,
+        #2585ff,
+        #9666ff
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: #d7deeb;
+      margin-bottom: 32px;
+    }
+
+
+    /* Hero buttons */
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .primary-btn {
+      display: inline-block;
+
+      padding: 12px 23px;
+
+      border-radius: 9px;
+
+      background: #147cff;
+      color: white;
+
+      font-weight: 600;
+
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        background 0.2s;
+    }
+
+    .primary-btn:hover {
+      background: #2688ff;
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 8px 25px rgba(20, 124, 255, 0.25);
+
+      text-decoration: none;
+    }
+
+    .secondary-btn {
+      display: inline-block;
+
+      padding: 11px 23px;
+
+      border-radius: 9px;
+
+      border: 1px solid rgba(255, 255, 255, 0.25);
+
+      color: white;
+
+      font-weight: 600;
+
+      transition:
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.2s;
+    }
+
+    .secondary-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+
+      border-color: rgba(255, 255, 255, 0.5);
+
+      transform: translateY(-2px);
+
+      text-decoration: none;
+    }
+
+
+    /* Profile image */
+
+    .hero-image-container {
+      width: 330px;
+      height: 330px;
+
+      margin-left: auto;
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-glow {
+      position: absolute;
+
+      width: 340px;
+      height: 340px;
+
+      border-radius: 50%;
+
+      background: linear-gradient(
+        135deg,
+        #147cff,
+        #8b5cff
+      );
+
+      filter: blur(35px);
+      opacity: 0.3;
+    }
+
+    .hero-image {
+      width: 300px;
+      height: 300px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+
+      border: 4px solid #478aff;
+
+      position: relative;
+      z-index: 2;
+
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+    }
+
+
+    /* Sections */
 
     section {
       max-width: 1000px;
 
       margin: auto;
+
       padding: 70px 25px;
 
       opacity: 0;
@@ -214,28 +417,25 @@
     }
 
 
-    /*ABOUT*/
+    /* About */
 
     #about p {
       max-width: 850px;
+
       font-size: 1.05rem;
       line-height: 1.8;
     }
 
 
-    /*  PROJECTS*/
+    /* Projects */
 
     .projects {
       display: grid;
 
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
 
       gap: 22px;
     }
-
-
-    /* Individual project card */
 
     .project-card {
       position: relative;
@@ -247,8 +447,7 @@
       border: 1px solid #e6e6e6;
       border-radius: 14px;
 
-      box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 
       opacity: 0;
       transform: translateY(20px);
@@ -268,12 +467,8 @@
     .project-card:hover {
       transform: translateY(-5px);
 
-      box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
     }
-
-
-    /* Featured Echo card */
 
     .project-card.featured {
       grid-column: 1 / -1;
@@ -282,9 +477,6 @@
 
       border-top: 4px solid #0077ff;
     }
-
-
-    /* Small featured text */
 
     .featured-label {
       display: block;
@@ -298,9 +490,6 @@
 
       margin-bottom: 12px;
     }
-
-
-    /* Project title/header */
 
     .project-header {
       display: flex;
@@ -321,9 +510,6 @@
       font-size: 1.8rem;
     }
 
-
-    /* Project description */
-
     .project-card p {
       color: #555;
 
@@ -333,9 +519,6 @@
 
       line-height: 1.7;
     }
-
-
-    /* In development badge */
 
     .project-status {
       background: #eeeeee;
@@ -352,7 +535,7 @@
     }
 
 
-    /* TECH BADGES\ */
+    /* Tech badges */
 
     .tech-stack {
       display: flex;
@@ -377,7 +560,7 @@
     }
 
 
-    /*PROJECT LINKS */
+    /* Project links */
 
     .project-link {
       display: inline-block;
@@ -390,15 +573,22 @@
     }
 
 
-    /* CONTACT*/
+    /* Contact */
 
     #contact p {
       line-height: 2;
       font-size: 1.05rem;
     }
 
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
 
-    /* FOOTER */
+
+    /* Footer */
 
     footer {
       text-align: center;
@@ -411,24 +601,64 @@
     }
 
 
-    /* MOBILE*/
+    /* Dark hero */
 
-    @media (max-width: 700px) {
+    body.dark .hero {
+      background:
+        radial-gradient(
+          circle at 75% 50%,
+          rgba(88, 64, 255, 0.15),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #050505,
+          #10101a
+        );
+    }
 
-      header {
-        padding: 70px 20px 55px;
+
+    /* Tablet */
+
+    @media (max-width: 800px) {
+
+      .top-nav {
+        padding: 0 20px;
       }
 
-      header h1 {
-        font-size: 2.2rem;
+      .nav-links {
+        gap: 15px;
       }
 
-      nav a {
-        margin: 0 8px;
+      .hero-content {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        gap: 45px;
+
+        padding: 60px 25px 70px;
       }
 
-      section {
-        padding: 55px 20px;
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-image-container {
+        margin: auto;
+
+        width: 260px;
+        height: 260px;
+      }
+
+      .hero-image {
+        width: 240px;
+        height: 240px;
+      }
+
+      .image-glow {
+        width: 260px;
+        height: 260px;
       }
 
       .projects {
@@ -438,6 +668,30 @@
       .project-card.featured {
         grid-column: auto;
         padding: 28px;
+      }
+
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 600px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .first-name,
+      .last-name {
+        font-size: 3.4rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      section {
+        padding: 55px 20px;
       }
 
       .project-card {
@@ -451,89 +705,155 @@
 
     }
 
+
+    /* Small mobile */
+
+    @media (max-width: 450px) {
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .primary-btn,
+      .secondary-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+    }
+
   </style>
 </head>
 
 
 <body>
 
+  <!-- Hero -->
 
-  <!--HERO -->
+  <header class="hero">
 
-  <header>
+    <nav class="top-nav">
 
-    <button class="toggle-btn">
-      Dark Mode
-    </button>
-
-    <img
-      src="pic.jpg"
-      alt="Zedekiah Bradley"
-    >
-
-    <h1>Zedekiah Bradley</h1>
-
-    <p>
-      Software Developer | UT Dallas '28
-    </p>
-
-    <nav>
-
-      <a href="#about">
-        About
+      <a href="#" class="logo">
+        ZB
       </a>
 
-      <a href="#projects">
-        Projects
-      </a>
+      <div class="nav-links">
 
-      <a href="#contact">
-        Contact
-      </a>
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#projects">
+          Projects
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
+      </div>
+
+      <button class="toggle-btn">
+        Dark Mode
+      </button>
 
     </nav>
+
+
+    <div class="hero-content">
+
+      <div class="hero-text">
+
+        <h1>
+
+          <span class="first-name">
+            Zedekiah
+          </span>
+
+          <span class="last-name">
+            Bradley
+          </span>
+
+        </h1>
+
+        <p class="hero-subtitle">
+          Software Developer | UT Dallas '28
+        </p>
+
+        <div class="hero-buttons">
+
+          <a
+            href="#projects"
+            class="primary-btn"
+          >
+            View My Projects
+          </a>
+
+          <a
+            href="#contact"
+            class="secondary-btn"
+          >
+            Get in Touch
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-image-container">
+
+        <div class="image-glow"></div>
+
+        <img
+          src="pic.jpg"
+          alt="Zedekiah Bradley"
+          class="hero-image"
+        >
+
+      </div>
+
+    </div>
 
   </header>
 
 
-  <!-- ABOUT -->
+  <!-- About -->
 
   <section id="about">
 
-    <h2>About Me</h2>
+    <h2>
+      About Me
+    </h2>
 
     <p>
-      I'm a Computer Science student at UT Dallas who enjoys
-      turning ideas into software people can actually use.
-      I'm especially interested in AI/ML and full-stack
-      development, and I enjoy figuring out how different
-      technologies can work together to solve real problems.
-      <br><br>
-      I've worked on projects ranging from an AI-powered
-      shopping assistant, to a SQL database-backed website,
-      to Echo, an application that transforms books into
-      character-voiced audiobooks. Through these projects,
-      I've gained experience with Python, Java, C++, React,
-      SQL, APIs, and AI development.
-      <br><br>
-      I'm always looking to learn something new, take on more
-      challenging projects, and work with people who are just
-      as excited about building things as I am.
+      I'm a Computer Science student at UT Dallas who enjoys turning ideas into software people can actually use.
+
+      I'm especially interested in AI/ML and full-stack development, and I enjoy figuring out how different technologies can work together to solve real problems.
+
+      I've worked on projects ranging from an AI-powered shopping assistant, to a simple SQL database backed website, to Echo, an application that transforms books into character-voiced audiobooks.
+
+      Through these projects, I've gained experience with Python, Java, C++, React, SQL, APIs, and AI development.
+
+      I'm always looking to learn something new, take on more challenging projects, and work with people who are just as excited about building things as I am.
     </p>
 
   </section>
 
 
-  <!-- PROJECTS-->
+  <!-- Projects -->
 
   <section id="projects">
 
-    <h2>Projects</h2>
+    <h2>
+      Projects
+    </h2>
 
     <div class="projects">
 
 
-      <!--ECHO-->
+      <!-- Echo -->
 
       <div class="project-card featured">
 
@@ -543,7 +863,9 @@
 
         <div class="project-header">
 
-          <h3>Echo</h3>
+          <h3>
+            Echo
+          </h3>
 
           <span class="project-status">
             IN DEVELOPMENT
@@ -552,19 +874,17 @@
         </div>
 
         <p>
-          A full-stack application built with a team of four
-          through ACM at UT Dallas that transforms books into
-          immersive AI-generated audiobooks. Echo extracts text
-          from PDF and EPUB files, identifies characters,
-          generates narration scripts, and creates unique AI
-          voices for characters and narration.
+          A full-stack mobile application built with a team of four through ACM at UT Dallas that transforms books into immersive AI-generated audiobooks. Echo extracts text from PDF and EPUB files, identifies characters, generates narration scripts, and creates unique AI voices for characters and narration.
         </p>
 
         <div class="tech-stack">
 
           <span>Python</span>
+
           <span>React</span>
+
           <span>AI/ML</span>
+
           <span>TTS</span>
 
         </div>
@@ -581,21 +901,20 @@
       </div>
 
 
-      <!-- CNZ SHOPPING -->
+      <!-- CNZ Shopping -->
 
       <div class="project-card">
 
         <div class="project-header">
-          <h3>CNZ Shopping</h3>
+
+          <h3>
+            CNZ Shopping
+          </h3>
+
         </div>
 
         <p>
-          An AI-powered shopping assistant built with a team
-          of four through Code2College. I focused on backend
-          development, integrating AI and real-time product
-          data to generate personalized recommendations,
-          compare products, and build shopping lists tailored
-          to a user's budget and needs.
+          An AI-powered shopping assistant built with a team of four through Code2College. I focused on backend development, integrating AI and real-time product data to generate personalized recommendations, compare products, and build shopping lists tailored to a user's budget and needs.
         </p>
 
         <p>
@@ -612,8 +931,11 @@
         <div class="tech-stack">
 
           <span>Python</span>
+
           <span>Flask</span>
+
           <span>OpenAI API</span>
+
           <span>SerpAPI</span>
 
         </div>
@@ -630,26 +952,28 @@
       </div>
 
 
-      <!-- SQL SIMPLE BANK -->
+      <!-- SQL Simple Bank -->
 
       <div class="project-card">
 
         <div class="project-header">
-          <h3>SQL Simple Bank</h3>
+
+          <h3>
+            SQL Simple Bank
+          </h3>
+
         </div>
 
         <p>
-          A simple banking application built to strengthen
-          my understanding of databases and connecting a
-          front end to stored data. The application includes
-          account creation, deposits, withdrawals, transfers,
-          and account viewing through a simple user interface.
+          A simple banking application used to strengthen knowledge of HTML and SQL databases. Includes a simple UI and basic functions: account creation, deposit/withdraw, transfers, and account viewing.
         </p>
 
         <div class="tech-stack">
 
           <span>SQL</span>
+
           <span>HTML</span>
+
           <span>CSS</span>
 
         </div>
@@ -665,67 +989,71 @@
 
       </div>
 
+    </div>
+
+  </section>
+
+
+  <!-- Contact -->
+
+  <section id="contact">
+
+    <h2>
+      Contact
+    </h2>
+
+    <div class="contact-links">
+
+      <p>
+        Email:
+        <a href="mailto:zedbradley30@gmail.com">
+          zedbradley30@gmail.com
+        </a>
+      </p>
+
+      <p>
+        LinkedIn:
+        <a
+          href="https://www.linkedin.com/in/zedekiah-bradley-010965372/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          linkedin.com/in/Zedekiah-Bradley
+        </a>
+      </p>
+
+      <p>
+        GitHub:
+        <a
+          href="https://github.com/ZedBradley"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          github.com/ZedBradley
+        </a>
+      </p>
 
     </div>
 
   </section>
 
 
-  <!-- CONTACT-->
-
-  <section id="contact">
-
-    <h2>Contact</h2>
-
-    <p>
-
-      📧 Email:
-      <a href="mailto:zedbradley30@gmail.com">
-        zedbradley30@gmail.com
-      </a>
-
-      <br>
-
-      💼 LinkedIn:
-      <a
-        href="https://www.linkedin.com/in/zedekiah-bradley-010965372/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        linkedin.com/in/Zedekiah-Bradley
-      </a>
-
-      <br>
-
-      💻 GitHub:
-      <a
-        href="https://github.com/ZedBradley"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        github.com/ZedBradley
-      </a>
-
-    </p>
-
-  </section>
-
-
-  <!-- FOOTER -->
+  <!-- Footer -->
 
   <footer>
 
-    © <span id="year"></span>
+    ©
+    <span id="year"></span>
     Zedekiah Bradley. All rights reserved.
 
   </footer>
 
 
-  <!-- JAVASCRIPT -->
+  <!-- JavaScript -->
 
   <script>
 
-    // Reveal sections as the user scrolls
+    // Reveal sections and project cards while scrolling
 
     const sections =
       document.querySelectorAll("section");
@@ -777,13 +1105,13 @@
     );
 
 
-    // Automatically update footer year
+    // Automatically update the copyright year
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
 
-    // Dark mode
+    // Dark mode toggle
 
     const toggleBtn =
       document.querySelector(".toggle-btn");
@@ -806,6 +1134,6 @@
 
   </script>
 
-
 </body>
+
 </html>
